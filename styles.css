@@ -1,0 +1,35 @@
+html {
+	background-image: url("https://meshle.com/content/uploads/2019/04/GamingLP5.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+}
+
+h1 {
+	text-align: center;
+}
+
+p {
+	font-size: 18px;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+li {
+	font-size: 22px;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+body {
+	color: #090F2C:
+	font: italic small-caps bold 16px/2 cursive;
+	width: 1000px;
+	margin: 0 auto;
+	background-color: rgba(192, 192, 192, 0.8);
+	padding: 0 20px 20px 20px;
+	border: 10px double black;
+
+	
+}
+
+
