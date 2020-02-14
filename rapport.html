@@ -1,6 +1,176 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
+<body lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Mon rapport</title>
+	<title>Rapport du projet</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Yvain Dalban">
+	<meta name="description" content="Rapport du projet de NSI">
+	<link rel="stylesheet" href="styles2.css">
+	
 </head>
+
+<body>
+
+<h1 id="hdp">Cahier des charges</h1>
+
+<h3>Quel est le projet ?</h3>
+    <ul>
+        <li>arborescence de fichier</li>
+    </ul>
+    <hr>
+<h2>A/ L’objectif et les motivations:</h2>
+
+    <p>
+	    Notre objectif principal est de trier de manière hiérarchique et pouvoir naviguer dans cet arbre librement. On veut également pouvoir créer et supprimer des fichiers textes et des dossiers à l’endroit voulu dans l’arborescence. 
+	    Nos motivations sont tout d’abord, d’apprendre plus en python et se donner un défi à accomplir, ce qui n’est pas évident. 
+    </p>
+    <hr>
+
+<h2>B/ L’organisation du travail en équipe:</h2>
+
+    <p>
+	    Nous nous sommes réparti le travail selon les aisances de chacun même si tout le monde c’est fait assisté dans sa tâche par les autres membres du groupe.
+        La répartition s’est faite de la manière suivante:
+        <ul>
+	        <li>Nathan Brunet  a été le concepteur principal du programme, pour des raisons évidentes de try hard intense en python (OTP Python), </li>
+	        <li>Maël Paulino s’est occupée de rédiger en partie le rapport,</li>
+	        <li>Yvain Dalban a aidé à rédiger le rapport avec Maël et a donné les idées pour mettre tout cela en forme et il a également fait le lien entre le rapport et le programme et l'a adapter en HTML pour le mettre sur le site sur lequel vous vous trouvez.</li>
+        </ul>
+        </p>
+    <hr>
+<h2>C/ Description des éléments du programme:</h2>
+
+	<p>
+        Le programme contient 7 fonctions accessibles par l’utilisateur, plus une fonction servant à réinitialiser la sauvegarde et le dossier principale et une fonction utilisé par une autre. Il y a très peu de code en dehors de celles-ci.
+        Après l’importation des modules nécessaires, il y a l’appel du fichier qui permet de sauvegarder les données de l’arborescence de fichier. Les fonctions commencent à être définies comme suit :
+        <ul>
+            <li>ouvrir(‘nom’) :<br>
+        Cette fonction permet d’ouvrir un dossier de l’arborescence déjà existant ou d’ouvrir un fichier texte existant avec le bloc-notes de Windows.</li>
+            <li>retour( ) :<br>
+        Cette fonction permet de revenir à la branche précédente dans l'arborescence pour pouvoir accéder aux fichiers et dossiers qu’elle contient.</li>
+ 	        <li>c_fichier( ) :<br>
+        Cette fonction permet de créer un fichier texte à l’emplacement actuel de l’utilisateur. Le fichier est créé seulement si le nom n’est pas déjà pris, sinon, cela prévient l’utilisateur et ce dernier doit changer le nom du fichier.</li>
+	        <li>c_dos(‘nom’) :<br>
+        Cette fonction permet de créer un nouveau dossier à l’emplacement actuel de l’utilisateur. Le dossier est créé seulement si le nom n’est pas déjà pris, sinon, cela prévient l’utilisateur et ce dernier doit changer de nom de dossier.</li>
+	        <li>suppr(‘nom’) :<br>
+        Cette fonction permet de supprimer un fichier ou un dossier dont le nom est la chaîne de caractère passée en paramètre de la fonction. Si le nom entré ne conduit à aucun dossier/fichier , l’utilisateur en sera prévenu.</li>
+	        <li>afficher( ) :<br>
+        Cette fonction permet d’afficher proprement les dossiers et les fichiers. On voit seulement apparaître, avec cette fonction, le nom des dossiers et non leur contenu.
+	        <li>cmd( ):<br>
+        Cette fonction ouvre une fenêtre TKinter qui affiche toutes les commandes disponibles et citées ci-dessus.</li>
+        </ul>
+    </p>
+    
+    <p>2 fonctions ne sont pas affichées dans la liste des commandes :</p>
+    <br>
+    <p>la première est une fonction utilisé pour la fonction c_dos :<br>
+    <br>    
+        -recherche_dossier(‘nom’) :<br>
+        Cette fonction recherche si un dossier s'appelant ‘nom’ est présent à l’emplacement actuel de l’utilisateur.
+    </p>
+    <br>
+    <p>
+    la deuxième est une fonction permettant de formater la sauvegarde :<br>
+    <br>
+	    -formater_tous_les_dossiers( ) :<br>
+    Cette fonction réinitialise le dossier principal (root) et remet la sauvegarde dans le fichier  .JSON  à [‘root’,[]] .
+    </p>
+
+<h2>D/ Développement théorique d’une fonction :</h2>
+
+    <p>
+        Nous allons développer la fonction ouvrir(‘nom’) qui est expliqué ci-dessus :<br>
+        <br>
+        La fonction contient tout d’abord l’affectation de la variable ‘nomTXT’  qui permet de ne taper que le nom du fichier à ouvrir sans avoir besoin de mettre l’extension du nom du fichier(‘.txt’) ou le nom du fichier en entier.<br>
+        Elle contient ensuite une boucle ‘for’ où ‘ j ’ est l’indice de chaque élément de la liste “here”, et permet de tester pour chaque élément de la liste si c’est une autre liste (ce qui correspond à un dossier), ou une chaine de caractère (ce qui correspond à un fichier) :<br>
+
+        Si c’est une liste, on vérifie l’élément ‘ 0 ’ de cette dernière, si celui-ci est égal au nom passé en paramètre de la fonction, la variable index vaut j, cela veut donc dire que le nom de la liste se situant au j-ième élément de la variable here a la même valeur que le nom passé en paramètre de la fonction.<br>
+        <br>
+        sinon, si c’est une chaîne de caractères, on vérifie le nom de cette dernière, si le nom de la chaîne est le même que celui passé en paramètre de la fonction, index vaut j.<br>
+    </p>
+    <p>
+        Un dernier cas est possible, celui où le nom passé en paramètre de la fonction ne correspond à aucun fichier ou dossier ou alors si l’élément testé n’est ni une liste, ni une chaine de caractere. Dans le cas où cela arrive, index n’est pas défini et n’a donc aucune valeur.
+    </p>
+    <br>
+    <p>
+        A la fin de cette série de test, la variable index a donc pour valeur (si le nom donné correspond bien a un fichier ou un dossier existant), l’indice ou se trouve l’élément ayant le même nom que celui passé en paramètre de la fonction.
+    </p>
+    <p>
+        Le bloc de code suivant est ‘try’ …. ‘except’.
+    </p>
+    <p>
+        
+        Dans la partie try, nous avons un test pour différencier le cas où on souhaite ouvrir un dossier de celui où l’on souhaite ouvrir un fichier texte.
+        <ul>
+            <li>si nous nous trouvons dans le premier cas, notre emplacement s’actualise est devient le contenu du dossier, soit l’élément 1 de celui-ci. de plus, la variable chemin contient un nouvel élément, le nom du dossier, et la variable historique (qui contient l’historique du contenu des dossiers où nous sommes allés) contient un nouvel élément, le contenu du dossier ou nous sommes allés, subséquemment, l’emplacement où on se trouve actuellement.</li>
+            <li>si nous nous trouvons dans le second cas, le programme, qui utilise la module ‘subprocess’, utilise la commande subprocess.run(‘notepad.exe ‘+here[index]). Cette dernière permet de lancer, grâce au bloc-notes windows, le fichier texte s'appelant comme l’élément ‘index’ du tableau here.</li>
+        </ul>
+    </p>
+    <p>
+        Le programme ne continu pas tant que le bloc-notes n’est pas fermé.<br>
+        La raison pour laquelle nous avons placé ce code dans un bloc try … except, est la suivante :<br>
+        lors de la série de test dans la première partie de la fonction, nous avons pu voir que la variable index pouvait ne pas être définie,<br>
+        et dans ce cas précis, rien que le premier test de la seconde partie du code de la fonction aurait renvoyé une erreur car on teste à cet endroit si here[index] est liste.
+        Et si index n’est pas défini, cela renvoie l'erreur UnboundLocalError que nous traitons ici avec le ‘except’, ce qui renvoie un message à l’utilisateur du programme :
+        “Ce n'est ni un fichier texte ni un dossier ou le dossier/fichier ne s'appelle pas comme ça”.
+        Une dernière ligne de code est effectué dans tous les cas, c’est l’appel de la fonction afficher( )
+    </p>
+
+<h3>I/Preuve de correction:</h3>
+
+    <p>
+    Soit P: La boucle ne fait que des test sauf quand here[j] est égal à ‘nom’ ou à ‘nomTXT’.<br>
+    Au début de la boucle rien n’a été fait puis le ‘if’ ne s'exécute que si here[j] est une liste donc seulement un test à été fait, puis si c’est le cas,
+    il y a une autre condition qui s'exécute cette fois ci si here[j][0] = nom c’est à dire si l’élément 0 de la liste ‘j’ elle même dans la liste ‘here’ est égal à nom.
+    Donc pour l’instant aucune autre action que des tests on été exécuté si here[j] est différent de ‘nom’.
+    Si la première condition ne s’est pas exécuté il y a un ‘elif’ qui s’exécute seulement si here[j] est une chaîne de caractère.
+    Si c’est le cas il faut également qu’il soit égal à ‘nom’ ou ‘nomTXT’, donc si here[j] est différent de ‘nom’ ou ‘nomTXT’ alors il ne se passe toujours rien.<br>
+    Cela prouve que P est un invariant de boucle, ce qui démontre que la fonction est correct.
+    </p>
+
+<h3>II/Complexité de la fonction:</h3>
+
+    <p>
+    Dans la fonction ‘ouvrir( )’, hors boucle, nous avons : 1 affectation (nomTXT) et 1 opération élémentaire(nom + ’.txt’)
+    puis nous avons une boucle qui comporte, soit 2 tests et 1 affectation, soit 3 tests, 2 opérations booléennes et 1 affectation, donc dans le pire des cas, cela sera la seconde possibilités.
+    Nous avons ensuite, hors boucle, une nouvelle fois, 3 affectations et 2 tests
+    et finalement, nous avons la fonction afficher qui est exécutée dans tous les cas et cette dernière comporte, soit 1 test, soit 1 test, cela revient donc à dire qu'elle exécute un test dans tous les cas, que cela soit le pire ou non.<br>
+    <br>
+    Soit n<sub>1</sub>, la taille de ‘here’ avant au début de la fonction.<br>
+    <br>
+    Soit n<sub>2</sub>, la taille de ‘here’ à la fin de la fonction.
+    </p>
+
+<p>On a donc :</p><br>
+<br>
+<img src="latex.svg"/>
+<br>
+<p>
+    = 11n + 7<br>
+    nous retrouvons la forme an + b.<br>
+    On a donc une complexité en O(n).
+</p>
+
+<h2>E/ Sitographie:</h2>
+
+<p>Les sites qui ont eu une importance dans le développement du projet:</p>
+ 
+<ul>
+    <li><a href="https://docs.python.org"><i>https://docs.python.org</i></a></li>
+    <li><a href="https://openclassrooms.com"><i>https://openclassrooms.com</i></a></li>
+    <li><a href="https://discord.gg/yBNpxV8"><i>Un magnifique serveur discord</i></a></li>
+</ul>
+
+<hr>
+<hr>
+
+<h3>Liens :</h3>
+<ul>
+    <li><a href="#hdp"><i>Haut de la page</i></a></li>
+    <li><a href= "projet.html"><i>Mon projet</i></a></li>
+    <li><a href= "index.html"><i>Page principale</i></a></li>
+</ul>
+
+</body>
